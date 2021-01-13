@@ -1,44 +1,25 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil, tap } from 'rxjs/operators';
+import { FormGroup } from '@angular/forms';
+import { FormPropModel } from '../../../classes/form-prop.model';
 
-@Component({
+@Component( {
   selector: 'app-form-simple',
   templateUrl: './form-simple.component.html',
-  styleUrls: ['./form-simple.component.scss']
-})
+  styleUrls: [ './form-simple.component.scss' ]
+} )
 export class FormSimpleComponent implements OnInit {
 
   @Input() formData: FormGroup;
-  private finishSubs = new Subject();
-  public dataButton = { text: 'boton', class: 'green' }
+  public dataButton = new FormPropModel( { classes: 'green', text: 'Botón' } );
 
-  constructor() {
-  }
+  constructor(
+  ) {}
 
   ngOnInit(): void {
-    this.subs();
   }
 
-  ngOnDestroy() {
-    this.finishSubs.next( true );
+  public getFormPropVal( pathNameProp: string[] ): any {
+    return this.formData.get( pathNameProp ).value;
   }
-
-  private subs() {
-    this.formData.valueChanges.pipe(
-      takeUntil( this.finishSubs ),
-      tap( el => {
-        console.log( el );
-      } )
-    ).subscribe();
-  }
-
-  public getFormProp( nameProp: string ): any {
-    console.log( this.formData.get( nameProp ).value);
-    return this.formData.get( nameProp ).value;
-  }
-
-
 
 }

@@ -1,12 +1,13 @@
-<div *ngIf="formData">
-  <div *ngIf="getFormProp('currentStep') === '1'"
-    [formGroup]="formData">
-    <h3>Formulario Cotización</h3>
-    <input formControlName="name">
-  </div>
-  <div *ngIf="getFormProp('currentStep') === '2'"
-    [formGroup]="formData">
-    <h3>Formulario Emisión</h3>
-    <input formControlName="edad">
+<div *ngIf="formData"
+  [formGroup]="formData">
+  <div class=""
+    formGroupName="individualTravelAsistance">
+    <h3>{{ getFormPropVal(['individualTravelAsistance', 'subTitle']) }}</h3>
+    <app-input [formPropPathArr]="['individualTravelAsistance', 'name']"
+      [formData]="formData"></app-input>
+    <app-input [formPropPathArr]="['individualTravelAsistance', 'apellidos', 'primero']"
+      [formData]="formData"></app-input>
+    <app-input [formPropPathArr]="['individualTravelAsistance', 'apellidos', 'segundo']"
+      [formData]="formData"></app-input>
   </div>
 </div>

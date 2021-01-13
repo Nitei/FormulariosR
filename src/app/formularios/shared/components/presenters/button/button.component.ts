@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormPropInterface } from '../../../interfaces/form-prop.interface';
 
 @Component({
   selector: 'app-button',
@@ -7,16 +8,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ButtonComponent implements OnInit {
 
-  @Input() public data;
-  @Output() public whenClick: EventEmitter<any> = new EventEmitter<any>();
+  @Input() public data: FormPropInterface;
+  
+  @Output() public evClick: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  toClick( objectToOutput?: any ): any {
-    this.whenClick.emit( objectToOutput );
+  toClick( objectToOutput?: any ): void {
+    this.evClick.emit( objectToOutput );
   }
 
 }

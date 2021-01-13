@@ -3,45 +3,37 @@ import { CommonModule } from '@angular/common';
 import { FormSimpleComponent } from './shared/components/forms/form-simple/form-simple.component';
 import { IndividualTravelAssistanceComponent } from './core/base/individual-travel-assistance/individual-travel-assistance.component';
 import { BaseComponent } from './core/base/base.component';
-import { DecesosComponent } from './core/base/decesos/decesos.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FakeStoreService } from './shared/services/fake-store.service';
 import { ButtonComponent } from './shared/components/presenters/button/button.component';
+import { InputComponent } from './shared/components/presenters/input/input.component';
+import { UtilsService } from './shared/services/utils/utils.service';
 
 
-@NgModule({
+@NgModule( {
   declarations: [
     BaseComponent,
 
     // Flujos
     IndividualTravelAssistanceComponent,
-    DecesosComponent,
 
     // Componentes comunes
+    ButtonComponent,
+    InputComponent,
 
     // Formularios
     FormSimpleComponent,
 
-    ButtonComponent
+
   ],
   exports: [
-    BaseComponent,
-
-    // Flujos
-    IndividualTravelAssistanceComponent,
-    DecesosComponent,
-
-    // Componentes comunes
-
-    // Formularios
-    FormSimpleComponent
+    BaseComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
   providers: [
-    FakeStoreService
+    UtilsService
   ]
-})
+} )
 export class FormulariosModule { }

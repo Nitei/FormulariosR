@@ -1,5 +1,22 @@
-<h2>Viajes</h2>
+<div *ngIf="formData"
+  [formGroup]="formData">
+  <div formGroupName="individualTravelAsistance">
 
-<app-form-simple [formData]="formData"></app-form-simple>
+    <h2>{{getFormProp(['individualTravelAsistance', 'title']) }}</h2>
+    <h3>currentStep: {{ getFormProp(['individualTravelAsistance', 'currentStep']) }}</h3>
 
-<app-button [data]="dataButton" (whenClick)="next()"></app-button>
+    <!-- Paso 1 -->
+    <div *ngIf="getFormProp(['individualTravelAsistance', 'currentStep']) === '1'">
+      <app-form-simple [formData]="formData"></app-form-simple>
+    </div>
+    <!-- Paso 2 -->
+    <div *ngIf="getFormProp(['individualTravelAsistance', 'currentStep']) === '2'">
+      <app-form-simple [formData]="formData"></app-form-simple>
+    </div>
+
+
+  </div>
+
+  <app-button [data]="dataButton"
+    (evClick)="next()"></app-button>
+</div>

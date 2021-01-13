@@ -1,8 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil, tap } from 'rxjs/operators';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { NameStepType } from '../../../shared/types/name-step.type';
+import { FormPropModel } from '../../../shared/classes/form-prop.model';
 
 @Component( {
   selector: 'app-individual-travel-assistance',
@@ -11,16 +11,12 @@ import { NameStepType } from '../../../shared/types/name-step.type';
 } )
 export class IndividualTravelAssistanceComponent implements OnInit, OnDestroy {
 
-  public formData: FormGroup;
+  @Input() formData: FormGroup;
   private finish = new Subject();
-  public dataButton = { text: 'boton', class: 'green' }
+  public dataButton = new FormPropModel( { classes: 'green', text: 'Botón' } );
 
-  constructor( private fb: FormBuilder ) {
-    this.formData = this.fb.group( {
-      name: '',
-      edad: '',
-      currentStep: '1'
-    } )
+  constructor(
+  ) {
   }
 
   ngOnInit(): void {
@@ -32,15 +28,17 @@ export class IndividualTravelAssistanceComponent implements OnInit, OnDestroy {
   }
 
   private subs() {
+    if ( !this.formData ) return;
     this.formData.valueChanges.pipe(
       takeUntil( this.finish ),
       tap( el => {
-        console.log( el );
+        console.log( 'desde individual travel asistance', el );
       } )
     ).subscribe();
   }
 
-  public getFormProp( nameProp: string ): NameStepType {
+  public getFormProp( nameProp: string | string[] ) {
+    if ( !this.formData || nameProp.length <= 0 ) return;
     return this.formData.get( nameProp ).value;
   }
 
@@ -49,9 +47,10 @@ export class IndividualTravelAssistanceComponent implements OnInit, OnDestroy {
   }
 
   public next() {
-    this.formData.get( 'currentStep' ).value === '1'
-      ? this.formData.patchValue( { currentStep: '2' } )
-      : this.formData.patchValue( { currentStep: '1' } )
+    if ( !this.formData ) return;
+    this.formData.get( [ 'individualTravelAsistance', 'currentStep' ] ).value === '1'
+      ? this.formData.get( [ 'individualTravelAsistance', 'currentStep' ] ).setValue('2')
+      : this.formData.get( [ 'individualTravelAsistance', 'currentStep' ] ).setValue( '1' )
   }
 
 

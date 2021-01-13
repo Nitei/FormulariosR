@@ -1,0 +1,12 @@
+<div *ngIf="formData">
+  <div *ngIf="getFormProp('currentStep') === '1'"
+    [formGroup]="formData">
+    <h3>Formulario Cotización</h3>
+    <input formControlName="name">
+  </div>
+  <div *ngIf="getFormProp('currentStep') === '2'"
+    [formGroup]="formData">
+    <h3>Formulario Emisión</h3>
+    <input formControlName="edad">
+  </div>
+</div>

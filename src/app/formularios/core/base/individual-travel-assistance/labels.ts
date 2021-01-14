@@ -5,26 +5,26 @@ export const labels = {
     name: {
       type: 'input',
       classes: 'big flex',
-      text: 'Nombre',
+      label: 'Nombre',
       valor: 'Isabel'
     },
     edad: {
       type: 'input',
       classes: 'big',
-      text: 'Edad',
+      label: 'Edad',
       valor: '50'
     },
     apellidos:  {
       primero: {
         type: 'input',
         classes: 'big',
-        text: 'Primer Apellido',
+        label: 'Primer Apellido',
         valor: 'Díaz'
       },
       segundo: {
         type: 'input',
         classes: 'big',
-        text: 'Segundo apellido',
+        label: 'Segundo apellido',
         valor: 'Ayuso'
       }
     },

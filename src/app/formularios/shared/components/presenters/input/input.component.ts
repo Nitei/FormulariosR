@@ -71,7 +71,7 @@ export class InputComponent implements OnInit, AfterViewChecked {
    * @returns Un string de Texto 
    */
   public getFormText(): string {
-    return this.formData.get( [ ...this.formPropPathArr, 'text' ] ).value;
+    return this.formData.get( [ ...this.formPropPathArr, 'label' ] ).value;
   }
 
 }

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 
 @Injectable()
 export class UtilsService {
 
-  private masterForm: FormGroup;
+  // private masterForm: FormGroup;
 
   constructor() {
   }
@@ -14,9 +13,9 @@ export class UtilsService {
   //   this.masterForm.valueChanges.subscribe( e => console.log( 'Formulario en servicio', e ) )
   // }
 
-  getMasterForm(): FormGroup {
-    return this.masterForm;
-  }
+  // getMasterForm(): FormGroup {
+  //   return this.masterForm;
+  // }
 
   // updateMasterForm( formUpdated: any ) {
   //   if ( this.masterForm ) {

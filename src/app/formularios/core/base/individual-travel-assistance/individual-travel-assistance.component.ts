@@ -24,7 +24,7 @@ export class IndividualTravelAssistanceComponent implements OnInit, OnDestroy {
   /**
    * @description Es un modelo de datos para el componente de botón
    */
-  public dataButton = new FormPropModel( { classes: 'green', text: 'Siguiente' } );
+  public dataButton = new FormPropModel( { classes: 'green', label: 'Siguiente' } );
 
   constructor(
   ) {

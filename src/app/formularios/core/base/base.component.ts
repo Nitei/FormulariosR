@@ -13,12 +13,24 @@ import { labels } from './individual-travel-assistance/labels';
 } )
 export class BaseComponent implements OnInit, OnDestroy {
 
+  /**
+   * @description Es el formulario
+   */
   formData: FormGroup;
 
+  /**
+   * @description Subject para finalizar las suscriciones
+   */
   private finishSubscriptions = new Subject();
 
+  /**
+   * @description Elegimos el tipo de formulario a mostrar
+   */
   @Input() secureType: SecureNameType;
 
+  /**
+   * @description Para emitir el valor del formulario entero a quien haga uso del modulo
+   */
   @Output() formValue: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -35,6 +47,9 @@ export class BaseComponent implements OnInit, OnDestroy {
     this.finishSubscriptions.next( true );
   }
 
+  /**
+   * @description Inicializacion del formulario
+   */
   private initForm(): void {
 
     this.formData = this.fb.group( {
@@ -43,7 +58,7 @@ export class BaseComponent implements OnInit, OnDestroy {
         title: labels.individualTravelAsistance.title,
         subTitle: labels.individualTravelAsistance.subTitle,
         name: this.fb.group( new FormPropModel( labels.individualTravelAsistance.name ) ),
-        edad: this.fb.group( new FormPropModel( labels.individualTravelAsistance.edad )),
+        edad: this.fb.group( new FormPropModel( labels.individualTravelAsistance.edad ) ),
         apellidos: this.fb.group( {
           primero: this.fb.group( new FormPropModel( labels.individualTravelAsistance.apellidos.primero ) ),
           segundo: this.fb.group( new FormPropModel( labels.individualTravelAsistance.apellidos.segundo ) )
@@ -54,13 +69,16 @@ export class BaseComponent implements OnInit, OnDestroy {
     } );
   };
 
+  /**
+   * @description En cada cambio del formulario se emite el formulario entero 
+   */
   private emitFormChanges(): void {
     if ( this.formData ) {
       this.formData.valueChanges
         .pipe(
           takeUntil( this.finishSubscriptions ),
           tap( changedData => {
-            console.log( this.formData.value );
+            console.log( 'Form value Emited', this.formData.value );
             this.formValue.emit( this.formData.value );
           } )
         ).subscribe();

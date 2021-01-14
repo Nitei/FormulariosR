@@ -1,3 +1,8 @@
-<div *ngIf="formData">
-  <input id="{{uniqueId}}" [ngClass]="getFormClass()" (keyup)="updateValue($event)">
+<div *ngIf="formData"
+  [ngClass]="getFormClass()">
+  <p>
+    {{getFormText()}}
+  </p>
+  <input id="{{uniqueId}}"
+    (keyup)="updateValue($event)">
 </div>

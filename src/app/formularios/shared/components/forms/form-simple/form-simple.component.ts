@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { FormPropModel } from '../../../classes/form-prop.model';
 
 @Component( {
   selector: 'app-form-simple',
@@ -9,8 +8,10 @@ import { FormPropModel } from '../../../classes/form-prop.model';
 } )
 export class FormSimpleComponent implements OnInit {
 
+/**
+ * @description Es el formulario
+ */
   @Input() formData: FormGroup;
-  public dataButton = new FormPropModel( { classes: 'green', text: 'Botón' } );
 
   constructor(
   ) {}
@@ -18,6 +19,9 @@ export class FormSimpleComponent implements OnInit {
   ngOnInit(): void {
   }
 
+/**
+ * @description Consigue el valor de una propiedad del formulario
+ */
   public getFormPropVal( pathNameProp: string[] ): any {
     return this.formData.get( pathNameProp ).value;
   }

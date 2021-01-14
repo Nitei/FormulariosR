@@ -1,22 +1,24 @@
 <div *ngIf="formData"
   [formGroup]="formData">
   <div formGroupName="individualTravelAsistance">
+    <!-- Asistencia en Viaje Particulares -->
 
-    <h2>{{getFormProp(['individualTravelAsistance', 'title']) }}</h2>
-    <h3>currentStep: {{ getFormProp(['individualTravelAsistance', 'currentStep']) }}</h3>
+    <h2>{{getFormPropVal(['individualTravelAsistance', 'title']) }}</h2>
+
+    <h3>currentStep: {{ getFormPropVal(['individualTravelAsistance', 'currentStep']) }}</h3>
 
     <!-- Paso 1 -->
-    <div *ngIf="getFormProp(['individualTravelAsistance', 'currentStep']) === '1'">
+    <div *ngIf="getFormPropVal(['individualTravelAsistance', 'currentStep']) === '1'">
       <app-form-simple [formData]="formData"></app-form-simple>
     </div>
     <!-- Paso 2 -->
-    <div *ngIf="getFormProp(['individualTravelAsistance', 'currentStep']) === '2'">
-      <app-form-simple [formData]="formData"></app-form-simple>
+    <div *ngIf="getFormPropVal(['individualTravelAsistance', 'currentStep']) === '2'">
+      <app-form-complex [formData]="formData"></app-form-complex>
     </div>
-
 
   </div>
 
-  <app-button [data]="dataButton"
+  <!-- Boton de siguiente -->
+  <app-button [dataButton]="dataButton"
     (evClick)="next()"></app-button>
 </div>

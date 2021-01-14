@@ -66,4 +66,12 @@ export class InputComponent implements OnInit, AfterViewChecked {
     return this.formData.get( [ ...this.formPropPathArr, 'classes' ] ).value;
   }
 
+  /**
+   * @description conseguimos los textos del campo del formulario
+   * @returns Un string de Texto 
+   */
+  public getFormText(): string {
+    return this.formData.get( [ ...this.formPropPathArr, 'text' ] ).value;
+  }
+
 }

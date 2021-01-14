@@ -9,10 +9,10 @@ export class UtilsService {
   constructor() {
   }
 
-  initMasterForm( formBase: FormGroup ) {
-    this.masterForm = formBase;
-    this.masterForm.valueChanges.subscribe( e => console.log( 'Formulario en servicio', e ) )
-  }
+  // initMasterForm( formBase: FormGroup ) {
+  //   this.masterForm = formBase;
+  //   this.masterForm.valueChanges.subscribe( e => console.log( 'Formulario en servicio', e ) )
+  // }
 
   getMasterForm(): FormGroup {
     return this.masterForm;

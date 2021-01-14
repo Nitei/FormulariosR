@@ -11,9 +11,20 @@ import { FormPropModel } from '../../../shared/classes/form-prop.model';
 } )
 export class IndividualTravelAssistanceComponent implements OnInit, OnDestroy {
 
+  /**
+   * @description Es el formulario
+   */
   @Input() formData: FormGroup;
+
+  /**
+   * @description Subject para finalizar suscripciones
+   */
   private finish = new Subject();
-  public dataButton = new FormPropModel( { classes: 'green', text: 'Botón' } );
+
+  /**
+   * @description Es un modelo de datos para el componente de botón
+   */
+  public dataButton = new FormPropModel( { classes: 'green', text: 'Siguiente' } );
 
   constructor(
   ) {
@@ -27,6 +38,9 @@ export class IndividualTravelAssistanceComponent implements OnInit, OnDestroy {
     this.finish.next( true );
   }
 
+  /**
+   * @description De momento solo se usa para ver como cambia dinamicamente el valor del formulario
+   */
   private subs() {
     if ( !this.formData ) return;
     this.formData.valueChanges.pipe(
@@ -37,19 +51,21 @@ export class IndividualTravelAssistanceComponent implements OnInit, OnDestroy {
     ).subscribe();
   }
 
-  public getFormProp( nameProp: string | string[] ) {
+  /**
+   * @description Consigue el valor de una propiedad del formulario
+   */
+  public getFormPropVal( nameProp: string | string[] ) {
     if ( !this.formData || nameProp.length <= 0 ) return;
     return this.formData.get( nameProp ).value;
   }
 
-  public log( ev: any ): any {
-    console.log( ev );
-  }
-
+  /**
+   * @description Ahora mismo solo alterna entre el numero 1 y 2 para mostrar un formuario u otro
+   */
   public next() {
     if ( !this.formData ) return;
     this.formData.get( [ 'individualTravelAsistance', 'currentStep' ] ).value === '1'
-      ? this.formData.get( [ 'individualTravelAsistance', 'currentStep' ] ).setValue('2')
+      ? this.formData.get( [ 'individualTravelAsistance', 'currentStep' ] ).setValue( '2' )
       : this.formData.get( [ 'individualTravelAsistance', 'currentStep' ] ).setValue( '1' )
   }
 

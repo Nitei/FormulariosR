@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from './shared/components/presenters/button/button.component';
 import { InputComponent } from './shared/components/presenters/input/input.component';
 import { UtilsService } from './shared/services/utils/utils.service';
+import { FormComplexComponent } from './shared/components/forms/form-complex/form-complex.component';
 
 
 @NgModule( {
@@ -22,7 +23,7 @@ import { UtilsService } from './shared/services/utils/utils.service';
 
     // Formularios
     FormSimpleComponent,
-
+    FormComplexComponent
 
   ],
   exports: [

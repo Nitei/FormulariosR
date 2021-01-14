@@ -1,0 +1,13 @@
+<div *ngIf="formData"
+  [formGroup]="formData">
+  <div class=""
+    formGroupName="individualTravelAsistance">
+    <h3>{{ getFormPropVal(['individualTravelAsistance', 'subTitle']) }}</h3>
+    <app-input [formPropPathArr]="['individualTravelAsistance', 'apellidos', 'primero']"
+      [formData]="formData"></app-input>
+    <app-input [formPropPathArr]="['individualTravelAsistance', 'apellidos', 'segundo']"
+      [formData]="formData"></app-input>
+    <app-input [formPropPathArr]="['individualTravelAsistance', 'edad']"
+      [formData]="formData"></app-input>
+  </div>
+</div>
